@@ -1,0 +1,12 @@
+{
+  "name": "projeto-dev-desktop",
+  "version": "1.0.0",
+  "description": "Projeto desenvolvimento desktop",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^44.9.0"
+  }
+}
