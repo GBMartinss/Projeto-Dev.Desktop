@@ -1,6 +1,5 @@
 
 //Biel: Aqui a estrutura coleta os dados do usuario com getUsers, saveUsers e etc...//
-
 const TasklyStorage = (() => {
   const USERS_KEY = 'taskly_users';
   const TASKS_KEY = 'taskly_tasks';
@@ -10,7 +9,7 @@ const TasklyStorage = (() => {
       const value = localStorage.getItem(key);
       return value ? JSON.parse(value) : [];
     } catch {
-      throw new Error('Usuario não encontrado');
+      throw new Error('Não foi possível ler os dados locais.');
     }
   }
 
@@ -18,18 +17,69 @@ const TasklyStorage = (() => {
     localStorage.setItem(key, JSON.stringify(data));
   }
 
-  function getUsers() {
-    return read(USERS_KEY);
+  async function hashPassword(password, salt) {
+    const data = new TextEncoder().encode(`${salt}:${password}`);
+    const hash = await crypto.subtle.digest('SHA-256', data);
+
+    return Array.from(new Uint8Array(hash))
+      .map(byte => byte.toString(16).padStart(2, '0'))
+      .join('');
   }
 
-  function saveUsers(users) {
+  async function registerUser(name, email, password) {
+    const users = read(USERS_KEY);
+    const normalizedEmail = email.trim().toLowerCase();
+
+    if (users.some(user => user.email === normalizedEmail)) {
+      throw new Error('Este e-mail já está cadastrado.');
+    }
+
+    const salt = crypto.randomUUID();
+    const passwordHash = await hashPassword(password, salt);
+
+    const user = {
+      id: crypto.randomUUID(),
+      name: name.trim(),
+      email: normalizedEmail,
+      salt,
+      passwordHash
+    };
+
+    users.push(user);
     write(USERS_KEY, users);
+
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email
+    };
+  }
+
+  async function loginUser(email, password) {
+    const normalizedEmail = email.trim().toLowerCase();
+    const user = read(USERS_KEY).find(
+      item => item.email === normalizedEmail
+    );
+
+    if (!user) {
+      throw new Error('E-mail ou senha incorretos.');
+    }
+
+    const passwordHash = await hashPassword(password, user.salt);
+
+    if (passwordHash !== user.passwordHash) {
+      throw new Error('E-mail ou senha incorretos.');
+    }
+
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email
+    };
   }
 
   function getTasks(userId) {
-    return read(TASKS_KEY).filter(
-      task => task.userId === userId
-    );
+    return read(TASKS_KEY).filter(task => task.userId === userId);
   }
 
   function saveTask(userId, task) {
@@ -38,6 +88,7 @@ const TasklyStorage = (() => {
     }
 
     const tasks = read(TASKS_KEY);
+
     tasks.push({
       ...task,
       id: crypto.randomUUID(),
@@ -48,16 +99,11 @@ const TasklyStorage = (() => {
   }
 
   return {
-    getUsers,
-    saveUsers,
+    registerUser,
+    loginUser,
     getTasks,
     saveTask
   };
 })();
 
 window.TasklyStorage = TasklyStorage;
-
-console.log(
-  'Taskly Storage carregado:',
-  typeof window.TasklyStorage
-);  //teste de localstorage para o cadastro/login//
