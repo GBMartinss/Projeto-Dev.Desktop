@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:;"
+  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taskly | Criar conta</title>
+  <link rel="stylesheet" href="register.css">
+</head>
+<body>
+  <main class="login-container">
+    <section class="login-card">
+      <h1>Taskly</h1>
+      <p>Crie sua conta para organizar suas tarefas.</p>
+
+      <form id="register-form">
+        <label for="name">Nome</label>
+        <input
+          type="text"
+          id="name"
+          placeholder="Seu nome"
+          autocomplete="name"
+          required
+        >
+
+        <label for="email">E-mail</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="seu@email.com"
+          autocomplete="email"
+          required
+        >
+
+        <label for="password">Senha</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Mínimo de 8 caracteres"
+          autocomplete="new-password"
+          minlength="8"
+          required
+        >
+
+        <label for="confirm-password">Confirmar senha</label>
+        <input
+          type="password"
+          id="confirm-password"
+          placeholder="Digite a senha novamente"
+          autocomplete="new-password"
+          minlength="8"
+          required
+        >
+
+        <button type="submit">Criar conta</button>
+        <p id="message" role="status" aria-live="polite"></p>
+      </form>
+
+      <p>
+        Já possui uma conta?
+        <a href="index.html" id="login-link">Entrar</a>
+      </p>
+    </section>
+  </main>
+
+  <script src="storage.js"></script>
+  <script src="register.js"></script>
+</body>
+</html>
