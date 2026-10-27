@@ -5,28 +5,28 @@
 :root {
   font-family: "Segoe UI", Arial, sans-serif;
   color: #f4f2fa;
-  background: #0b0b12;
   font-synthesis: none;
 }
 
-body {
+/* AJUSTADO: Tornamos o fundo do Electron totalmente transparente */
+html, body {
   margin: 0;
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  background:
-    radial-gradient(ellipse at 15% 10%, #251540 0, transparent 45%),
-    #0b0b12;
+  padding: 0;
+  background: transparent !important;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
+
 
 .login-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  width: min(1000px, 92vw);
-  min-height: 590px;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
   border: 1px solid #292536;
-  border-radius: 22px;
+  border-radius: 22px; /* Mantém o seu arredondamento perfeito */
   background: #111019;
   box-shadow: 0 25px 100px #0008;
 }
@@ -36,6 +36,11 @@ body {
   display: flex;
   flex-direction: column;
   background: linear-gradient(145deg, #1b142a, #100e18);
+  -webkit-app-region: drag; /* Permite arrastar o aplicativo clicando no lado esquerdo */
+}
+
+.logo, .brand h1, .brand p, .quote {
+  -webkit-app-region: no-drag;
 }
 
 .logo {
