@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taskly</title>
+    <link rel="stylesheet" href="perfil.css">
+</head>
+<body>
+
+    <!-- Menu lateral -->
+    <aside class="menu-lateral">
+
+        <h1 class="logo">Meu Cantinho</h1>
+
+        <hr>
+
+        <div class="perfil">
+
+            <div class="avatar">
+                <div class="cabeca"></div>
+                <div class="corpo"></div>
+            </div>
+
+            <h2>Seu nome</h2>
+            <p>@usuario</p>
+
+        </div>
+
+        <nav>
+            <a href="#sobre" class="item-menu ativo">
+                Sobre mim
+            </a>
+
+            <a href="#rotina" class="item-menu">
+                Minha rotina
+            </a>
+        </nav>
+
+        <div class="sair">
+           ↪️ Sair da conta
+        </div>
+
+    </aside>
+
+    <!-- Conteúdo principal -->
+    <main class="conteudo">
+
+        <header class="cabecalho">
+            <p>SOBRE MIM</p>
+            <h1>Quem sou eu?</h1>
+            <span>Um pouquinho sobre a pessoa por trás da rotina.</span>
+        </header>
+
+        <section class="area-principal" id="sobre">
+
+            <!-- Cartão dos dados pessoais -->
+            <div class="cartao-dados">
+
+                <h2>Meus dados</h2>
+                <hr>
+
+                <form id="form-perfil">
+
+                    <div class="campo nome">
+                        <label for="nome">Nome completo</label>
+                        <input
+                            type="text"
+                            id="nome"
+                            placeholder="Digite seu nome completo"
+                        >
+                    </div>
+
+                    <div class="campo nome-usuario">
+                        <label for="usuario">Nome de usuário</label>
+                        <input
+                            type="text"
+                            id="usuario"
+                            placeholder="Escolha seu nome de usuário"
+                        >
+                    </div>
+
+                    <div class="dados">
+
+                        <div class="campo dado rosa">
+                            <label for="idade">Idade</label>
+                            <input
+                                type="text"
+                                id="idade"
+                                placeholder="Ex.: 21 anos"
+                            >
+                        </div>
+
+                        <div class="campo dado lilas">
+                            <label for="altura">Altura</label>
+                            <input
+                                type="text"
+                                id="altura"
+                                placeholder="Ex.: 1,65 m"
+                            >
+                        </div>
+
+                        <div class="campo dado rosa">
+                            <label for="peso">Peso</label>
+                            <input
+                                type="text"
+                                id="peso"
+                                placeholder="Ex.: 60 kg"
+                            >
+                        </div>
+
+                    </div>
+
+                    <div class="campo sobre-mim">
+                        <label for="descricao">Sobre mim</label>
+                        <textarea
+                            id="descricao"
+                            placeholder="Conte um pouco sobre você..."
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="botao-salvar">
+                        Salvar alterações
+                    </button>
+
+                </form>
+
+            </div>
+
+            <!-- Cartão da rotina -->
+            <div class="cartao-rotina" id="rotina">
+
+                <h2>Minha rotina</h2>
+
+                <p>
+                    Organização é o primeiro passo
+                    para grandes conquistas!
+                </p>
+
+                <a href="#" class="botao">
+                    Acessar minha rotina →
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

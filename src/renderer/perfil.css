@@ -1,0 +1,414 @@
+
+/* CONFIGURAÇÕES GERAIS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    background: #A58BD2;
+    color: #32145F;
+    display: flex;
+}
+
+/* MENU LATERAL */
+
+.menu-lateral {
+    background: #35145F;
+    color: white;
+    width: 230px;
+    height: 100vh;
+    padding: 22px 16px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.logo {
+    font-family: cursive;
+    font-size: 25px;
+    text-align: center;
+    color: #F0B1F0;
+}
+
+.subtitulo {
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin: 8px 0 18px;
+}
+
+.menu-lateral hr {
+    border: 1px solid #A56BC9;
+}
+
+/* PERFIL DO MENU */
+
+.perfil {
+    text-align: center;
+    margin: 22px 0;
+}
+
+.perfil h2 {
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.perfil p {
+    color: #D9B6F0;
+    font-size: 13px;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    background: #D879CE;
+    border: 3px solid #F5D7F5;
+    border-radius: 50%;
+    margin: 0 auto 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cabeca {
+    width: 24px;
+    height: 24px;
+    background: #48247A;
+    border-radius: 50%;
+    position: absolute;
+    top: 13px;
+    left: 25px;
+}
+
+.corpo {
+    width: 48px;
+    height: 32px;
+    background: #48247A;
+    border-radius: 40px 40px 0 0;
+    position: absolute;
+    bottom: 0;
+    left: 13px;
+}
+
+/* OPÇÕES DO MENU */
+
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.item-menu {
+    text-decoration: none;
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    transition: background 0.3s;
+}
+
+.item-menu:hover,
+.item-menu.ativo {
+    background: #C33EBA;
+}
+
+.sair {
+    margin-top: auto;
+    padding: 12px;
+    border-top: 2px solid #A56BC9;
+    background: #C33EBA;
+    color: white;
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s;
+    position: relative;
+}
+
+.sair::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    border-top: 2px solid #A56BC9;
+}
+
+.sair:hover {
+    background: #E052CE;
+}
+
+/* ÁREA PRINCIPAL */
+
+.conteudo {
+    flex: 1;
+    min-width: 0;
+    height: 100vh;
+    overflow: hidden;
+    padding: 28px;
+    background: linear-gradient(
+        135deg,
+        #9878C8,
+        #C5A5E8
+    );
+}
+
+.cabecalho {
+    margin-bottom: 22px;
+}
+
+.cabecalho p {
+    color: #572B91;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.cabecalho h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.cabecalho span {
+    font-size: 15px;
+}
+
+/* ORGANIZAÇÃO DOS CARTÕES */
+
+.area-principal {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 18px;
+    align-items: start;
+}
+
+/* CARTÃO DOS DADOS */
+
+.cartao-dados {
+    background: #E6A5D9;
+    padding: 22px;
+    border-radius: 15px;
+    box-shadow: 0 5px 12px #48247A20;
+}
+
+.cartao-dados h2,
+.cartao-rotina h2 {
+    font-size: 23px;
+    margin-bottom: 14px;
+}
+
+.cartao-dados hr {
+    border: 1px solid #B878D2;
+    margin-bottom: 16px;
+}
+
+/* CAMPOS DO FORMULÁRIO */
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.campo label {
+    font-size: 13px;
+    color: #48247A;
+    font-weight: bold;
+}
+
+.campo input,
+.campo textarea {
+    width: 100%;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: #32145F;
+    background: #B18BE0;
+    outline: none;
+    transition: border 0.3s, background 0.3s;
+}
+
+.campo input:focus,
+.campo textarea:focus {
+    border-color: #7836A8;
+    background: #D0B5ED;
+}
+
+.campo input::placeholder,
+.campo textarea::placeholder {
+    color: #5C3B7A;
+    opacity: 0.8;
+}
+
+.nome,
+.nome-usuario {
+    margin-bottom: 14px;
+}
+
+/* IDADE, ALTURA E PESO */
+
+.dados {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.dado {
+    padding: 12px;
+    border-radius: 12px;
+}
+
+.rosa {
+    background: #D875C9;
+}
+
+.lilas {
+    background: #B18BE0;
+}
+
+/* SOBRE MIM */
+
+.sobre-mim {
+    margin-top: 15px;
+}
+
+.campo textarea {
+    min-height: 55px;
+    height: 55px;
+    resize: none;
+}
+
+/* BOTÃO SALVAR */
+
+.botao-salvar {
+    width: 100%;
+    margin-top: 15px;
+    padding: 11px;
+    background: #C33EBA;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.botao-salvar:hover {
+    background: #A927A0;
+}
+
+/* CARTÃO DA ROTINA */
+
+.cartao-rotina {
+    background: #7843B0;
+    color: white;
+    padding: 22px;
+    border-radius: 15px;
+    box-shadow: 0 5px 12px #48247A20;
+}
+
+.cartao-rotina h2 {
+    font-size: 23px;
+}
+
+.cartao-rotina p {
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 16px 0;
+}
+
+.botao {
+    display: block;
+    text-align: center;
+    background: #D94BC1;
+    color: white;
+    padding: 11px;
+    border-radius: 10px;
+    font-size: 13px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.botao:hover {
+    background: #EE79D8;
+}
+
+/* TELAS MENORES */
+
+@media (max-width: 1000px) {
+    .menu-lateral {
+        width: 200px;
+        padding: 18px 12px;
+    }
+
+    .conteudo {
+        padding: 20px;
+    }
+
+    .cabecalho h1 {
+        font-size: 27px;
+    }
+
+    .area-principal {
+        gap: 12px;
+    }
+
+    .cartao-dados,
+    .cartao-rotina {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 700px) {
+    html,
+    body {
+        height: auto;
+        min-height: 100%;
+        overflow: auto;
+    }
+
+    body {
+        flex-direction: column;
+    }
+
+    .menu-lateral {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+    }
+
+    .sair {
+        margin-top: 20px;
+    }
+
+    .conteudo {
+        height: auto;
+        overflow: visible;
+        padding: 18px;
+    }
+
+    .area-principal {
+        grid-template-columns: 1fr;
+    }
+
+    .dados {
+        grid-template-columns: 1fr;
+    }
+
+    .mensagem {
+        margin-bottom: 10px;
+    }
+}
