@@ -22,9 +22,9 @@ form.addEventListener('submit', async (event) => {
       password.value
     );
 
-    sessionStorage.setItem('taskly_current_user', JSON.stringify(user));
+   sessionStorage.setItem('taskly_current_user', JSON.stringify(user));
 
-    message.textContent = `Bem-vindo, ${user.name}!`;
+    window.location.href = 'perfil.html';
   } catch (error) {
     message.textContent = error.message || 'Não foi possível entrar.';
   }
