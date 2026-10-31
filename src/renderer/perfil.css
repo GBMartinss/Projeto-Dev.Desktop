@@ -25,6 +25,7 @@ body {
 /* MENU LATERAL */
 
 .menu-lateral {
+    -webkit-app-region: no-drag;
     background: #35145F;
     color: white;
     width: 230px;
@@ -123,14 +124,20 @@ nav {
 }
 
 .sair {
+    display: block;
+    width: 100%;
     margin-top: auto;
     padding: 12px;
+    border: none;
     border-top: 2px solid #A56BC9;
     background: #C33EBA;
     color: white;
     border-radius: 10px;
+    font-family: inherit;
+    font-size: 14px;
     font-weight: bold;
     text-align: center;
+    text-decoration: none;
     cursor: pointer;
     transition: background 0.3s;
     position: relative;

@@ -17,6 +17,7 @@ function createWindow() {
     symbolColor: '#ffffff',
     height: 40                
   },
+ main
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: false
