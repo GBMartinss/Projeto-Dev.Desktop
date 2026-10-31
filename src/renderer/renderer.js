@@ -34,3 +34,27 @@ document.querySelector('#register-link').addEventListener('click', (event) => {
   event.preventDefault();
   window.location.href = 'register.html';
 });
+
+// controles personalizados
+
+const btnClose = document.getElementById('btn-close');
+const btnMinimize = document.getElementById('btn-minimize');
+const btnMaximize = document.getElementById('btn-maximize');
+
+if (btnClose) {
+  btnClose.addEventListener('click', () => {
+    window.windowControls.close();
+  });
+}
+
+if (btnMinimize) {
+  btnMinimize.addEventListener('click', () => {
+    window.windowControls.minimize();
+  });
+}
+
+if (btnMaximize) {
+  btnMaximize.addEventListener('click', () => {
+    window.windowControls.maximize();
+  });
+}
