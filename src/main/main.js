@@ -7,18 +7,17 @@ function createWindow() {
     height: 720,
     minWidth: 850,
     minHeight: 600,
+    frame: false,
+    transparent: true,
     autoHideMenuBar: true,
-<<<<<<< Updated upstream
     backgroundColor: '#0B0B12',
-=======
-    backgroundColor: '#00000000',
      titleBarStyle: 'hidden',
      titleBarOverlay: {          
     color: '#0B0B12',        
     symbolColor: '#ffffff',
     height: 40                
   },
->>>>>>> Stashed changes
+ main
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: false
