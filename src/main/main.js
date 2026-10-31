@@ -1,4 +1,5 @@
-const { app, BrowserWindow } = require('electron');
+
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('node:path');
 
 function createWindow() {
@@ -7,18 +8,11 @@ function createWindow() {
     height: 720,
     minWidth: 850,
     minHeight: 600,
-    frame: false,
-    transparent: true,
     autoHideMenuBar: true,
+    frame: false,
     backgroundColor: '#0B0B12',
-     titleBarStyle: 'hidden',
-     titleBarOverlay: {          
-    color: '#0B0B12',        
-    symbolColor: '#ffffff',
-    height: 40                
-  },
- main
     webPreferences: {
+      preload: path.join(__dirname, '../preload/preload.js'),
       contextIsolation: true,
       nodeIntegration: false
     }
@@ -26,6 +20,23 @@ function createWindow() {
 
   win.loadFile(path.join(__dirname, '../renderer/index.html'));
 }
+ipcMain.on('window-close', (event) => {
+  BrowserWindow.fromWebContents(event.sender)?.close();
+});
+ipcMain.on('window-minimize', (event) => {
+  BrowserWindow.fromWebContents(event.sender)?.minimize();
+});
+ipcMain.on('window-maximize', (event) => {
+  const win = BrowserWindow.fromWebContents(event.sender);
+
+  if (!win) return;
+
+  if (win.isMaximized()) {
+    win.unmaximize();
+  } else {
+    win.maximize();
+  }
+});
 
 app.whenReady().then(createWindow);
 
