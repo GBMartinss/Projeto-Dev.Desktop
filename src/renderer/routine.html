@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Minha Rotina | Taskly</title>
+
+    <link rel="stylesheet" href="routine.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- MENU LATERAL -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <span class="logo-icon">✦</span>
+                <h1>Taskly</h1>
+                <p>Organize. Planeje. Conquiste.</p>
+            </div>
+
+            <div class="profile">
+                <div class="profile-avatar">U</div>
+                <h3>Usuário</h3>
+                <span class="online">● Online</span>
+            </div>
+
+            <nav class="menu">
+                <a href="index.html">⌂ <span>Sobre mim</span></a>
+                <a href="routine.html" class="active">▣ <span>Minha rotina</span></a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="dark-mode">
+                    <span>☾ Modo escuro</span>
+                    <span class="toggle">●</span>
+                </div>
+
+                <a href="index.html" class="logout">⇥ Sair da conta</a>
+            </div>
+
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="main-content">
+
+            <header class="header">
+                <div>
+                    <span class="welcome">ORGANIZE SEU DIA</span>
+                    <h2>Minha rotina <span>✦</span></h2>
+                    <p>Pequenos passos, grandes conquistas.</p>
+                </div>
+
+                <div class="date-card">
+                    <span>HOJE É</span>
+                    <strong id="current-date">Carregando...</strong>
+                </div>
+            </header>
+
+            <!-- RESUMO -->
+            <section class="summary">
+
+                <div class="summary-card">
+                    <span class="summary-icon">▣</span>
+                    <div>
+                        <p>Total de tarefas</p>
+                        <h3 id="total-tasks">0</h3>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <span class="summary-icon">◷</span>
+                    <div>
+                        <p>Pendentes</p>
+                        <h3 id="pending-tasks">0</h3>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <span class="summary-icon">✓</span>
+                    <div>
+                        <p>Concluídas</p>
+                        <h3 id="completed-tasks">0</h3>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- ADICIONAR TAREFA -->
+            <section class="add-section">
+
+                <div>
+                    <h3>Adicionar atividade</h3>
+                    <p>Planeje o que você precisa fazer hoje.</p>
+                </div>
+
+                <form id="task-form">
+
+                    <input
+                        type="text"
+                        id="task-name"
+                        placeholder="Digite uma atividade..."
+                        required
+                    >
+
+                    <input
+                        type="time"
+                        id="task-time"
+                        required
+                    >
+
+                    <select id="task-period">
+                        <option value="morning">Manhã</option>
+                        <option value="afternoon">Tarde</option>
+                        <option value="night">Noite</option>
+                    </select>
+
+                    <button type="submit">+ Adicionar</button>
+
+                </form>
+
+            </section>
+
+            <!-- LISTA DE ATIVIDADES -->
+            <section class="routine-section">
+
+                <div class="section-title">
+                    <div>
+                        <h3>Minha programação</h3>
+                        <p>Acompanhe suas atividades diárias.</p>
+                    </div>
+                </div>
+
+                <div class="period-card">
+
+                    <div class="period-title">
+                        <div>
+                            <span class="period-icon morning-icon">☀</span>
+                            <h3>Manhã</h3>
+                        </div>
+                        <span class="period-label">06h - 12h</span>
+                    </div>
+
+                    <div id="morning-list" class="task-list"></div>
+
+                </div>
+
+                <div class="period-card">
+
+                    <div class="period-title">
+                        <div>
+                            <span class="period-icon afternoon-icon">☼</span>
+                            <h3>Tarde</h3>
+                        </div>
+                        <span class="period-label">12h - 18h</span>
+                    </div>
+
+                    <div id="afternoon-list" class="task-list"></div>
+
+                </div>
+
+                <div class="period-card">
+
+                    <div class="period-title">
+                        <div>
+                            <span class="period-icon night-icon">☾</span>
+                            <h3>Noite</h3>
+                        </div>
+                        <span class="period-label">18h - 00h</span>
+                    </div>
+
+                    <div id="night-list" class="task-list"></div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- PAINEL DIREITO -->
+        <aside class="right-panel">
+
+            <div class="motivation-card">
+                <div class="star">✦</div>
+
+                <div class="illustration">🌙</div>
+
+                <h3>Um passo de cada vez!</h3>
+                <p>Você está construindo sua melhor versão.</p>
+
+                <span class="heart">♡</span>
+            </div>
+
+            <div class="progress-card">
+
+                <h3>Seu progresso</h3>
+
+                <div class="progress-number">
+                    <strong id="progress-number">0%</strong>
+                    <span>concluído</span>
+                </div>
+
+                <div class="progress-bar">
+                    <div id="progress-fill"></div>
+                </div>
+
+                <p id="progress-message">
+                    Vamos começar sua rotina!
+                </p>
+
+            </div>
+
+            <div class="quote-card">
+                <span>✦ DICA DO DIA</span>
+                <p>
+                    "A disciplina é a ponte entre seus objetivos
+                    e suas realizações."
+                </p>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <script src="routine.js"></script>
+
+</body>
+</html>
