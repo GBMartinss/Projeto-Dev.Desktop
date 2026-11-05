@@ -24,7 +24,7 @@ form.addEventListener('submit', async (event) => {
 
    sessionStorage.setItem('taskly_current_user', JSON.stringify(user));
 
-    window.location.href = 'perfil.html';
+    window.location.href = 'routine.html';
   } catch (error) {
     message.textContent = error.message || 'Não foi possível entrar.';
   }
