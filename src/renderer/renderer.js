@@ -22,9 +22,9 @@ form.addEventListener('submit', async (event) => {
       password.value
     );
 
-    sessionStorage.setItem('taskly_current_user', JSON.stringify(user));
+   sessionStorage.setItem('taskly_current_user', JSON.stringify(user));
 
-    message.textContent = `Bem-vindo, ${user.name}!`;
+    window.location.href = 'perfil.html';
   } catch (error) {
     message.textContent = error.message || 'Não foi possível entrar.';
   }
@@ -34,3 +34,27 @@ document.querySelector('#register-link').addEventListener('click', (event) => {
   event.preventDefault();
   window.location.href = 'register.html';
 });
+
+// controles personalizados
+
+const btnClose = document.getElementById('btn-close');
+const btnMinimize = document.getElementById('btn-minimize');
+const btnMaximize = document.getElementById('btn-maximize');
+
+if (btnClose) {
+  btnClose.addEventListener('click', () => {
+    window.windowControls.close();
+  });
+}
+
+if (btnMinimize) {
+  btnMinimize.addEventListener('click', () => {
+    window.windowControls.minimize();
+  });
+}
+
+if (btnMaximize) {
+  btnMaximize.addEventListener('click', () => {
+    window.windowControls.maximize();
+  });
+}
