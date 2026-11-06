@@ -7,116 +7,106 @@
     <title>Taskly</title>
     <link rel="stylesheet" href="perfil.css">
 </head>
+
 <body>
 
-    <!-- Menu lateral -->
+    <!-- Aqui fica o menu lateral com a logo e as informações do perfil. -->
     <aside class="menu-lateral">
 
-        <h1 class="logo">Meu Perfil</h1>
+        <div class="marca">
+            <h1 class="logo">✦ Taskly</h1>
+            <p class="subtitulo">Organize. Planeje. Conquiste.</p>
+        </div>
 
         <hr>
 
         <div class="perfil">
 
-            <div class="avatar">
-                <div class="cabeca"></div>
-                <div class="corpo"></div>
+            <div class="avatar" id="avatar">
+                <img id="foto-perfil" src="" alt="Foto de perfil">
+                <span id="letra-avatar">U</span>
+
+                <label for="escolher-foto" class="botao-foto">
+                    Alterar foto
+                </label>
             </div>
 
-            <h2>Seu nome</h2>
-            <p>@usuario</p>
+            <input type="file" id="escolher-foto" accept="image/*" hidden>
+
+            <h2 id="nome-perfil">Seu nome</h2>
+            <p id="usuario-perfil">@usuario</p>
+
+            <span class="status">● Online</span>
 
         </div>
 
-        <nav>
+        <!-- links para navegar entre as páginas. -->
+        <nav class="menu">
             <a href="#sobre" class="item-menu ativo">
-                Sobre mim
+                ⌂ <span>Sobre mim</span>
             </a>
 
-            <a href="#rotina" class="item-menu">
-                Minha rotina
+            <a href="routine.html" class="item-menu">
+                ▣ <span>Minha rotina</span>
             </a>
         </nav>
 
-        <a href="index.html" class="sair" id="btn-sair">
-            ↪️ Sair da conta
+        <!-- Botão para trocar entre o modo claro e escuro. -->
+        <button type="button" class="modo-escuro" id="btn-tema">
+            ☾ Modo escuro
+        </button>
+
+        <a href="register.html" class="sair" id="btn-sair">
+            ↪ Sair da conta
         </a>
+
     </aside>
 
-    <!-- Conteúdo principal -->
+
+    <!-- Conteúdo principal da página. -->
     <main class="conteudo">
 
         <header class="cabecalho">
             <p>SOBRE MIM</p>
-            <h1>Quem sou eu?</h1>
+            <h1>Quem sou eu? ✦</h1>
             <span>Um pouquinho sobre a pessoa por trás da rotina.</span>
         </header>
 
+
+        <!-- Cartões com as informações do meu perfil. -->
         <section class="area-principal" id="sobre">
 
-            <!-- Cartão dos dados pessoais -->
+            <!-- Cartão com meus dados pessoais. -->
             <div class="cartao-dados">
 
                 <h2>Meus dados</h2>
                 <hr>
 
+                <!-- Formulário para preencher e salvar minhas informações. -->
                 <form id="form-perfil">
-
-                    <div class="campo nome">
-                        <label for="nome">Nome completo</label>
-                        <input
-                            type="text"
-                            id="nome"
-                            placeholder="Digite seu nome completo"
-                        >
-                    </div>
-
-                    <div class="campo nome-usuario">
-                        <label for="usuario">Nome de usuário</label>
-                        <input
-                            type="text"
-                            id="usuario"
-                            placeholder="Escolha seu nome de usuário"
-                        >
-                    </div>
 
                     <div class="dados">
 
                         <div class="campo dado rosa">
                             <label for="idade">Idade</label>
-                            <input
-                                type="text"
-                                id="idade"
-                                placeholder="Ex.: 21 anos"
-                            >
+                            <input type="text" id="idade" placeholder="Ex.: 21 anos">
                         </div>
 
                         <div class="campo dado lilas">
                             <label for="altura">Altura</label>
-                            <input
-                                type="text"
-                                id="altura"
-                                placeholder="Ex.: 1,65 m"
-                            >
+                            <input type="text" id="altura" placeholder="Ex.: 1,65 m">
                         </div>
 
                         <div class="campo dado rosa">
                             <label for="peso">Peso</label>
-                            <input
-                                type="text"
-                                id="peso"
-                                placeholder="Ex.: 60 kg"
-                            >
+                            <input type="text" id="peso" placeholder="Ex.: 60 kg">
                         </div>
 
                     </div>
 
                     <div class="campo sobre-mim">
                         <label for="descricao">Sobre mim</label>
-                        <textarea
-                            id="descricao"
-                            placeholder="Conte um pouco sobre você..."
-                        ></textarea>
+                        <textarea id="descricao" placeholder="Conte um pouco sobre você..."></textarea>
                     </div>
 
                     <button type="submit" class="botao-salvar">
@@ -125,27 +115,65 @@
 
                 </form>
 
-            </div>
-
-            <!-- Cartão da rotina -->
-            <div class="cartao-rotina" id="rotina">
-
-                <h2>Minha rotina</h2>
-
-                <p>
-                    Organização é o primeiro passo
-                    para grandes conquistas!
-                </p>
-
-                <a href="#" class="botao">
-                    Acessar minha rotina →
-                </a>
+                <div class="frase-perfil">
+                    "Cada pequeno passo faz parte da construção de quem você deseja ser."
+                </div>
 
             </div>
 
+
+            <!-- Coluna com os cartões da direita. -->
+            <div class="coluna-direita">
+
+                <!-- Cartão que dá acesso à minha rotina. -->
+                <div class="cartao-rotina" id="rotina">
+
+                    <h2>Minha rotina</h2>
+
+                    <p>
+                        Organização é o primeiro passo para grandes conquistas!
+                    </p>
+
+                    <a href="routine.html" class="botao">
+                        Acessar minha rotina →
+                    </a>
+
+                </div>
+
+
+                <!-- Cartão para alterar as informações da minha conta. -->
+                <div class="cartao-configuracoes" id="configuracoes">
+
+                    <h2>Configurações da conta</h2>
+
+                    <p>Altere suas informações de usuário.</p>
+
+                    <hr>
+
+                    <form id="form-configuracoes">
+
+                        <div class="campo">
+                            <label for="novo-nome">Nome de exibição</label>
+                            <input type="text" id="novo-nome" placeholder="Digite seu nome">
+                        </div>
+
+                        <div class="campo">
+                            <label for="novo-usuario">Nome de usuário</label>
+                            <input type="text" id="novo-usuario" placeholder="Digite seu usuário">
+                        </div>
+
+                        <button type="submit" class="botao-configurar">
+                            Salvar configurações
+                        </button>
+
+                    </form>
+
+                </div>
+            </div>
         </section>
-
     </main>
-<script src="perfil.js"></script>
+
+    <script src="perfil.js"></script>
+
 </body>
 </html>

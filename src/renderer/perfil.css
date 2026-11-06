@@ -1,421 +1,429 @@
 
-/* CONFIGURAÇÕES GERAIS */
+/* Cores que uso no modo claro. */
+:root {
+    --fundo: #f8f2fc;
+    --cartao: #ffffff;
+    --texto: #39264d;
+    --texto-secundario: #806b91;
+    --roxo: #8051a8;
+    --roxo-escuro: #553477;
+    --rosa: #f8dce9;
+    --lilas: #eadcf7;
+    --borda: #e9dcef;
+    --menu: #39264d;
+    --menu-texto: #ffffff;
+    --campo: #ffffff;
+}
 
+/* Cores que mudam quando ativo o modo escuro. */
+body.modo-escuro {
+    --fundo: #101020;
+    --cartao: #211f3d;
+    --texto: #f5f2ff;
+    --texto-secundario: #aaa5ca;
+    --roxo: #a989ff;
+    --roxo-escuro: #7049d8;
+    --rosa: #302d50;
+    --lilas: #282447;
+    --borda: #393556;
+    --menu: #1d1b38;
+    --menu-texto: #ffffff;
+    --campo: #302d50;
+}
+
+/* Configuração geral da página. */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html,
 body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    background: #A58BD2;
-    color: #32145F;
     display: flex;
+    min-height: 100vh;
+    background-color: #f8f2fc;
+    color: var(--texto);
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-/* MENU LATERAL */
+body.modo-escuro {
+    background-color: #101020 !important;
+    color: #f5f2ff;
+}
 
+/* Menu lateral, incluindo seu fundo e suas bordas. */
 .menu-lateral {
-    -webkit-app-region: no-drag;
-    background: #35145F;
-    color: white;
-    width: 230px;
-    height: 100vh;
-    padding: 22px 16px;
+    width: 260px;
+    height: calc(100vh - 40px);
+    min-height: 0;
+    margin: 20px;
+    background: var(--menu);
+    color: var(--menu-texto);
+    padding: 30px 22px;
     display: flex;
     flex-direction: column;
+    border-radius: 25px;
+    overflow: hidden;
     flex-shrink: 0;
+    border: 1px solid #343052;
+    box-shadow: 0 8px 25px #00000030;
+}
+
+body.modo-escuro .menu-lateral {
+    background: linear-gradient(180deg, #1d1b38, #17162d);
+    border: 1px solid #343052;
+}
+
+
+/* Logo e a frase de apresentação do aplicativo. */
+.marca {
+    text-align: center;
 }
 
 .logo {
-    font-family: cursive;
-    font-size: 25px;
-    text-align: center;
-    color: #F0B1F0;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: #f0b1f0;
 }
 
 .subtitulo {
-    text-align: center;
-    font-size: 10px;
-    letter-spacing: 2px;
-    margin: 8px 0 18px;
+    font-size: 12px;
+    margin-top: 5px;
+    color: #d6c3e5;
 }
 
 .menu-lateral hr {
-    border: 1px solid #A56BC9;
+    border: none;
+    border-top: 1px solid #ffffff30;
+    margin: 25px 0;
 }
 
-/* PERFIL DO MENU */
-
+/* Estilos da foto e das informações do perfil. */
 .perfil {
     text-align: center;
-    margin: 22px 0;
-}
-
-.perfil h2 {
-    font-size: 18px;
-    margin-bottom: 6px;
-}
-
-.perfil p {
-    color: #D9B6F0;
-    font-size: 13px;
+    margin-bottom: 35px;
 }
 
 .avatar {
-    width: 80px;
-    height: 80px;
-    background: #D879CE;
-    border: 3px solid #F5D7F5;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    margin: 0 auto 12px;
+    background: #e7c5f5;
+    color: #553477;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: bold;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
 }
 
-.cabeca {
-    width: 24px;
-    height: 24px;
-    background: #48247A;
+#foto-perfil {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 50%;
-    position: absolute;
-    top: 13px;
-    left: 25px;
+    display: none;
 }
 
-.corpo {
-    width: 48px;
-    height: 32px;
-    background: #48247A;
-    border-radius: 40px 40px 0 0;
+#letra-avatar {
+    font-size: 32px;
+}
+
+.botao-foto {
     position: absolute;
     bottom: 0;
-    left: 13px;
+    left: 0;
+    width: 100%;
+    padding: 7px 2px;
+    background: #000000a0;
+    color: white;
+    font-size: 10px;
+    text-align: center;
+    cursor: pointer;
 }
 
-/* OPÇÕES DO MENU */
+.perfil h2 {
+    font-size: 17px;
+    margin-bottom: 5px;
+}
 
-nav {
+.perfil p {
+    font-size: 13px;
+    color: #d6c3e5;
+    margin-bottom: 8px;
+}
+
+.status {
+    font-size: 11px;
+    color: #a9e8bb;
+}
+
+/* Links de navegação e o destaque roxo do menu. */
+nav.menu {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
 
 .item-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     text-decoration: none;
-    color: white;
-    padding: 12px;
-    border-radius: 10px;
-    transition: background 0.3s;
+    color: #b6b0d5;
+    padding: 15px;
+    border-radius: 13px;
+    font-size: 16px;
+    transition: 0.3s;
 }
 
 .item-menu:hover,
 .item-menu.ativo {
-    background: #C33EBA;
+    background: linear-gradient(90deg, #6945c7, #49318f);
+    color: white;
+}
+
+/* Botões de tema e de saída da conta. */
+.modo-escuro {
+    margin-top: auto;
+    padding: 12px;
+    border: 1px solid #ffffff40;
+    border-radius: 8px;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
 }
 
 .sair {
-    display: block;
-    width: 100%;
-    margin-top: auto;
+    margin-top: 15px;
     padding: 12px;
-    border: none;
-    border-top: 2px solid #A56BC9;
-    background: #C33EBA;
-    color: white;
-    border-radius: 10px;
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
+    border-top: 1px solid #ffffff40;
     text-decoration: none;
-    cursor: pointer;
-    transition: background 0.3s;
-    position: relative;
+    color: #ffffff;
+    font-size: 13px;
 }
 
-.sair::before {
-    content: "";
-    position: absolute;
-    top: -20px;
-    left: 0;
-    width: 100%;
-    border-top: 2px solid #A56BC9;
-}
-
-.sair:hover {
-    background: #E052CE;
-}
-
-/* ÁREA PRINCIPAL */
-
+/* Conteúdo principal e o cabeçalho da página. */
 .conteudo {
     flex: 1;
     min-width: 0;
-    height: 100vh;
-    overflow: hidden;
-    padding: 28px;
-    background: linear-gradient(
-        135deg,
-        #9878C8,
-        #C5A5E8
-    );
+    padding: 30px;
+    overflow-y: auto;
 }
 
 .cabecalho {
-    margin-bottom: 22px;
+    margin-bottom: 25px;
 }
 
 .cabecalho p {
-    color: #572B91;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
+    color: var(--roxo);
+    letter-spacing: 2px;
     margin-bottom: 8px;
 }
 
 .cabecalho h1 {
-    font-size: 32px;
+    font-size: 30px;
     margin-bottom: 8px;
 }
 
 .cabecalho span {
-    font-size: 15px;
+    color: var(--texto-secundario);
+    font-size: 14px;
 }
 
-/* ORGANIZAÇÃO DOS CARTÕES */
-
+/* Organização dos cartões e do fundo para destacar essa área. */
 .area-principal {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 18px;
+    grid-template-columns: 1.3fr 0.9fr;
+    gap: 25px;
     align-items: start;
+    background: #17162d;
+    border: 1px solid #343052;
+    border-radius: 22px;
+    padding: 25px;
+    margin-top: 10px;
 }
 
-/* CARTÃO DOS DADOS */
+/* Ajuste de fundo dessa área quando o modo claro está ativo. */
+body:not(.modo-escuro) .area-principal {
+    background: #f0e8f7;
+    border-color: #e9dcef;
+}
 
-.cartao-dados {
-    background: #E6A5D9;
-    padding: 22px;
+/* Aqui defino as cores, bordas, sombras e tamanhos dos cartões. */
+.cartao-dados,
+.cartao-rotina,
+.cartao-configuracoes {
+    background: var(--cartao);
+    border: 1px solid var(--borda);
     border-radius: 15px;
-    box-shadow: 0 5px 12px #48247A20;
+    padding: 25px;
+    box-shadow: 0 5px 18px #00000018;
+    transition: 0.3s;
 }
 
 .cartao-dados h2,
-.cartao-rotina h2 {
-    font-size: 23px;
-    margin-bottom: 14px;
+.cartao-rotina h2,
+.cartao-configuracoes h2 {
+    font-size: 19px;
+    margin-bottom: 15px;
 }
 
-.cartao-dados hr {
-    border: 1px solid #B878D2;
-    margin-bottom: 16px;
+.cartao-dados hr,
+.cartao-configuracoes hr {
+    border: none;
+    border-top: 1px solid var(--borda);
+    margin-bottom: 22px;
 }
 
-/* CAMPOS DO FORMULÁRIO */
+/* Campos onde preencho meus dados pessoais. */
+.dados {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
 
 .campo {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
+    margin-bottom: 18px;
 }
 
 .campo label {
     font-size: 13px;
-    color: #48247A;
     font-weight: bold;
+    color: var(--texto);
 }
 
 .campo input,
 .campo textarea {
     width: 100%;
-    border: 2px solid transparent;
-    border-radius: 10px;
-    padding: 10px;
+    padding: 12px;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    background: var(--campo);
+    color: var(--texto);
+    outline: none;
     font-family: Arial, sans-serif;
     font-size: 13px;
-    color: #32145F;
-    background: #B18BE0;
-    outline: none;
-    transition: border 0.3s, background 0.3s;
 }
 
 .campo input:focus,
 .campo textarea:focus {
-    border-color: #7836A8;
-    background: #D0B5ED;
-}
-
-.campo input::placeholder,
-.campo textarea::placeholder {
-    color: #5C3B7A;
-    opacity: 0.8;
-}
-
-.nome,
-.nome-usuario {
-    margin-bottom: 14px;
-}
-
-/* IDADE, ALTURA E PESO */
-
-.dados {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-}
-
-.dado {
-    padding: 12px;
-    border-radius: 12px;
-}
-
-.rosa {
-    background: #D875C9;
-}
-
-.lilas {
-    background: #B18BE0;
-}
-
-/* SOBRE MIM */
-
-.sobre-mim {
-    margin-top: 15px;
+    border-color: var(--roxo);
 }
 
 .campo textarea {
-    min-height: 55px;
-    height: 55px;
-    resize: none;
+    min-height: 120px;
+    resize: vertical;
 }
 
-/* BOTÃO SALVAR */
-
-.botao-salvar {
-    width: 100%;
-    margin-top: 15px;
-    padding: 11px;
-    background: #C33EBA;
-    color: white;
-    border: none;
+/* Troca de cores dos cartões menores de dados. */
+.dado {
+    padding: 13px;
     border-radius: 10px;
-    font-size: 13px;
-    cursor: pointer;
-    transition: background 0.3s;
 }
 
-.botao-salvar:hover {
-    background: #A927A0;
+.dado.rosa {
+    background: var(--rosa);
 }
 
-/* CARTÃO DA ROTINA */
+.dado.lilas {
+    background: var(--lilas);
+}
 
-.cartao-rotina {
-    background: #7843B0;
+/* Botões de salvar e acessar as páginas. */
+.botao-salvar,
+.botao-configurar,
+.botao {
+    display: inline-block;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 18px;
+    background: var(--roxo);
     color: white;
-    padding: 22px;
-    border-radius: 15px;
-    box-shadow: 0 5px 12px #48247A20;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
-.cartao-rotina h2 {
-    font-size: 23px;
+.botao-salvar:hover,
+.botao-configurar:hover,
+.botao:hover {
+    background: var(--roxo-escuro);
 }
 
-.cartao-rotina p {
+/* Cartões que ficam na coluna direita. */
+.coluna-direita {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cartao-rotina p,
+.cartao-configuracoes p {
+    color: var(--texto-secundario);
     font-size: 13px;
     line-height: 1.6;
-    margin: 16px 0;
+    margin-bottom: 18px;
 }
 
-.botao {
-    display: block;
-    text-align: center;
-    background: #D94BC1;
-    color: white;
-    padding: 11px;
+/* Frase que aparece no final do cartão de dados. */
+.frase-perfil {
+    margin-top: 25px;
+    padding: 18px;
+    background: var(--lilas);
     border-radius: 10px;
+    color: var(--texto);
     font-size: 13px;
-    text-decoration: none;
-    transition: background 0.3s;
+    font-style: italic;
+    text-align: center;
+    line-height: 1.6;
 }
 
-.botao:hover {
-    background: #EE79D8;
-}
-
-/* TELAS MENORES */
-
-@media (max-width: 1000px) {
-    .menu-lateral {
-        width: 200px;
-        padding: 18px 12px;
-    }
-
-    .conteudo {
-        padding: 20px;
-    }
-
-    .cabecalho h1 {
-        font-size: 27px;
-    }
-
+/* Organização da página para telas menores. */
+@media (max-width: 900px) {
     .area-principal {
-        gap: 12px;
-    }
-
-    .cartao-dados,
-    .cartao-rotina {
-        padding: 16px;
+        grid-template-columns: 1fr;
     }
 }
 
-@media (max-width: 700px) {
-    html,
-    body {
-        height: auto;
-        min-height: 100%;
-        overflow: auto;
-    }
-
+@media (max-width: 650px) {
     body {
         flex-direction: column;
     }
 
     .menu-lateral {
         width: 100%;
-        height: auto;
-        min-height: 0;
-    }
-
-    .sair {
-        margin-top: 20px;
+        min-height: auto;
     }
 
     .conteudo {
-        height: auto;
-        overflow: visible;
-        padding: 18px;
+        padding: 22px;
     }
 
     .area-principal {
-        grid-template-columns: 1fr;
+        padding: 15px;
     }
 
     .dados {
         grid-template-columns: 1fr;
     }
 
-    .mensagem {
-        margin-bottom: 10px;
+    .cabecalho h1 {
+        font-size: 25px;
     }
 }
