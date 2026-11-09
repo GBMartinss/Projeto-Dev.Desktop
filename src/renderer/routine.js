@@ -1,11 +1,12 @@
 // BOTÃO DE SAIR //
-const botaoSair = document.querySelector('#btn-sair');
+const botaoSair = document.querySelector('.logout');
 
-botaoSair.addEventListener('click', () => {
-  sessionStorage.removeItem('taskly_current_user');
-  window.location.assign(new URL('index.html', document.baseURI).href);
-});
-
+if (botaoSair) {
+    botaoSair.addEventListener('click', () => {
+        sessionStorage.removeItem('taskly_current_user');
+        window.location.assign(new URL('index.html', document.baseURI).href)
+    })
+}
 
 // ELEMENTOS DA TELA
 
@@ -251,3 +252,26 @@ function updateSummary() {
 
 showDate();
 renderTasks();
+
+// CARREGAR NOME DO USUÁRIO LOGADO //
+
+function loadUserData() {
+    const storedUser = sessionStorage.getItem('taskly_current_user');
+
+    if (storedUser) {
+        const userData = JSON.parse(storedUser);
+        const nameElement = document.getElementById('profile-name');
+        if (nameElement && userData.name) {
+            nameElement.textContent = userData.name;
+        }
+
+        const avatarElement = document.querySelector('.profile-avatar');
+        if (avatarElement && userData.name) {
+            avatarElement.textContent = userData.name.charAt(0).toUpperCase();
+        }
+    }
+}
+
+showDate();
+renderTasks();
+loadUserData();
