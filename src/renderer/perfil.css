@@ -85,7 +85,7 @@ body.modo-escuro .menu-lateral {
     font-size: 30px;
     font-weight: 800;
     letter-spacing: -1px;
-    color: #f0b1f0;
+    color: #ffffff;
 }
 
 .subtitulo {
@@ -206,7 +206,7 @@ nav.menu {
     padding: 12px;
     border-top: 1px solid #ffffff40;
     text-decoration: none;
-    color: #ffffff;
+    color:white;
     font-size: 13px;
 }
 
