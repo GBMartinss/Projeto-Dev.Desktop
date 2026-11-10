@@ -67,7 +67,7 @@ if (configuracoesSalvas) {
     const configuracoes = JSON.parse(configuracoesSalvas);
 
     nomePerfil.textContent = configuracoes.nome || "Seu nome";
-    usuarioPerfil.textContent = configuracoes.usuario || "@usuario";
+    usuarioPerfil.textContent = configuracoes.usuario ? "@" + configuracoes.usuario.replace (/^@/, "") : "@usuario";
 
     novoNome.value = configuracoes.nome || "";
     novoUsuario.value = configuracoes.usuario || "";
@@ -86,7 +86,7 @@ if (formularioConfiguracoes) {
         localStorage.setItem("configuracoesPerfil", JSON.stringify(configuracoes));
 
         nomePerfil.textContent = configuracoes.nome || "Seu nome";
-        usuarioPerfil.textContent = configuracoes.usuario || "@usuario";
+        usuarioPerfil.textContent = configuracoes.usuario ? "@" + configuracoes.usuario.replace (/^@/, "") : "@usuario";
 
         alert("Configurações atualizadas com sucesso!");
     });
